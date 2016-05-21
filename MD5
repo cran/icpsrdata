@@ -1,0 +1,13 @@
+9fa97f43a3cac5a7849ac904b5960192 *DESCRIPTION
+2d7ce5c7d3951088feb6ce9c1aa74f8f *LICENSE
+40ae4626227e8197f77f7706cf1635e7 *NAMESPACE
+96e1dff4835bb1105072e6f90269b77c *NEWS.md
+2727b8dd3ad3bf983680d32656b720c2 *R/icpsrdownload.R
+961067e54736aa3ee1212af0e8bd4592 *README.md
+50bde1cb753921bbf716600d0665e2fe *build/vignette.rds
+7d3d86ad11ef72ba97e30f8f7792bdb0 *inst/doc/icpsrdata-vignette.R
+9e77737e4c5af0d875a48308f680fd9b *inst/doc/icpsrdata-vignette.Rmd
+c67e8df322ba22990833264dde6fe90c *inst/doc/icpsrdata-vignette.html
+546eb8720f67bc34aa387f84ab1c6b17 *man/icpsr_download.Rd
+c555ad2512d751b7a2a599a903523696 *vignettes/icpsr_tt2014.png
+9e77737e4c5af0d875a48308f680fd9b *vignettes/icpsrdata-vignette.Rmd
