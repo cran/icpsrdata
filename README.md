@@ -12,8 +12,8 @@ To install:
 * the latest development version:
 
 ```R
-if (!require(ghit)) install.packages("ghit")
-ghit::install_github("fsolt/icpsrdata")
+if (!require(remotes)) install.packages("remotes")
+remotes::install_github("fsolt/icpsrdata")
 ```
 
 For more details, check out [the vignette](https://cran.r-project.org/package=icpsrdata/vignettes/icpsrdata-vignette.html).
