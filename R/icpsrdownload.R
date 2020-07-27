@@ -37,7 +37,8 @@
 #'
 #' @examples
 #' \dontrun{
-#'  icpsr_download(file_id = c(3730, 36138))
+#'  icpsr_download(file_id = c(3730, 36138),
+#'                 download_dir = tempdir()) # remember to specify a directory for your download
 #' }
 #' 
 #' @importFrom rvest html_session html_form set_values submit_form jump_to follow_link
@@ -63,7 +64,8 @@ icpsr_download <- function(file_id,
     if (is.null(email)) {
         options("icpsr_email" = Sys.getenv("icpsr_email"))
         email <- getOption("icpsr_email")
-        if (is.null(email)) {
+        if (nchar(email) == 0) email <- NULL
+        if (is.null(email)) { 
             icpsr_email <- readline(prompt = "ICPSR requires your user account information.  Please enter your email address: \n")
             options("icpsr_email" = icpsr_email)
             email <- getOption("icpsr_email")
@@ -73,6 +75,7 @@ icpsr_download <- function(file_id,
     if (is.null(password)) {
         options("icpsr_password" = Sys.getenv("icpsr_password"))
         password <- getOption("icpsr_password")
+        if (nchar(password) == 0) password <- NULL
         if (is.null(password)) {
             icpsr_password <- readline(prompt = "Please enter your ICPSR password: \n")
             options("icpsr_password" = icpsr_password)
@@ -93,7 +96,7 @@ icpsr_download <- function(file_id,
         url <- paste0("http://www.icpsr.umich.edu/cgi-bin/bob/zipcart2?path=ICPSR&study=", item, "&bundle=all&ds=&dups=yes")
         
         s <- html_session(url)
-        form <- html_form(s)[[3]]
+        form <- html_form(s)[[2]]
         add_email <- list(name = "email",
                           type = "text",
                           value = email,
@@ -116,7 +119,7 @@ icpsr_download <- function(file_id,
         suppressMessages(agree_terms <- submit_form(s, form) %>% 
                              jump_to(url))
         suppressMessages(output <- submit_form(agree_terms, 
-                                               html_form(agree_terms)[[3]]) %>% 
+                                               html_form(agree_terms)[[2]]) %>% 
                              follow_link("download your files here"))
         
         file_name <- paste0("ICPSR_", sprintf("%05d", item), ".zip")
